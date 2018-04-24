@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 202bc96812cfb41d0a97fdc986427b84
-timeCreated: 1524531540
+guid: 8464192cfd2cc4f87a7d3bd5c8899057
+timeCreated: 1524562348
 licenseType: Pro
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 32
-  forceTextureCase: -2
+  fontSize: 24
+  forceTextureCase: 0
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: genown_v01
+  fontName: Salaryman
   fontNames:
-  - genown_v01
+  - Salaryman
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

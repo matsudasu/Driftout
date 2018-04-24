@@ -7,49 +7,55 @@ using UnityEngine.UI;
 
 public class Driftout : MonoBehaviour
 {
-	public Text disp;
 	public Car car;
 	public Transform blocks;
 
-	bool inGame;
+	public Text title;
+	public Text finish;
+	public Text gameOver;
+	public Text time;
+
 	float timer;
 
 	// Use this for initialization
 	void Start ()
 	{
+		
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (blocks.childCount == 0) {
+		if (title.enabled) {
+			if (Input.GetAxis("Horizontal") != 0) {
+				title.enabled = false;
+				car.enabled = true;
+			}
+		}
+
+		if (car && blocks.childCount == 0 && finish.enabled == false) {
 			car.enabled = false;
-			disp.text = "Finish! " + timer.ToString ("0.00");
+			finish.enabled = true;
 
-			if (Input.anyKeyDown) {
-				SceneManager.LoadScene ("Main");
-			}
-
-			return;
+			Invoke ("Restart", 5f);
 		}
 
-		if (!car) {
-			disp.text = "Game Over";
+		if (!car && finish.enabled == false && gameOver.enabled == false) {
+			gameOver.enabled = true;
 
-			if (Input.anyKeyDown) {
-				SceneManager.LoadScene ("Main");
-			}
-
-			return;
+			Invoke ("Restart", 3f);
 		}
 
-		if (Input.GetAxis("Horizontal") != 0) {
-			car.enabled = true;
-		}
+		if (car && car.enabled) {
+			var str = "t i m e  " + timer.ToString ("0.0");
 
-		if (car.enabled) {
-			disp.text = timer.ToString ("0.00");
+			time.text = str.Replace("1", " 1 ");
 			timer += Time.deltaTime;
 		}
+	}
+
+	void Restart ()
+	{
+		SceneManager.LoadScene ("Main");
 	}
 }
