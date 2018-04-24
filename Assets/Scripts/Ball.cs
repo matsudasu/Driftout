@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-	public float force = 10f;
+	public float force = 15f;
 
 	Rigidbody rb;
 
@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody> ();
 		rb.AddForce (transform.forward * force, ForceMode.Impulse);
+
+        Destroy (gameObject, 30f);
 	}
 	
 	// Update is called once per frame
@@ -25,8 +27,6 @@ public class Ball : MonoBehaviour
 
 	void OnCollisionEnter (Collision c)
 	{
-		rb.AddForce (-Vector3.forward);
-
 		if (c.gameObject.tag == "BottomWall") {
 			Destroy (gameObject);
 		}
